@@ -27,7 +27,8 @@ SECRET_KEY = '9xn*jmjp)9=shqf#ol9odx(z!r3sig5tv5nst6$28yinu+ow(t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','rakeshblog.herokuapp.com']
+
 
 
 # Application definition
@@ -85,11 +86,11 @@ WSGI_APPLICATION = 'demopro.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'USER': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'PASSWORD': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'HOST': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'PORT': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': 'herokudb',
+        'USER': 'postgres',
+        'PASSWORD': 'rakesh',
+        'HOST': 'localhost',
+        'PORT': '58887',
     }
 }
 
@@ -119,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkotta'
 
 USE_I18N = True
 
