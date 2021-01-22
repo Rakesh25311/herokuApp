@@ -27,7 +27,7 @@ SECRET_KEY = '9xn*jmjp)9=shqf#ol9odx(z!r3sig5tv5nst6$28yinu+ow(t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','rakeshblog.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','.herokuapp.com']
 
 
 
@@ -39,11 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'demoapp'
 ]
 
 MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -90,10 +93,10 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': 'rakesh',
         'HOST': 'localhost',
-        'PORT': '58887',
+        'PORT': '',
     }
 }
-
+WHITENOISE_USE_FINDERS = True
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 # Password validation
@@ -135,3 +138,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS=[os.path.join(BASE_DIR,'static')]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
